@@ -18,6 +18,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [serverStatus, setServerStatus] = useState('checking');
   const [error, setError] = useState(null);
+  const initialAssistantMessage =
+    'Hola, soy LIA, la asistente virtual de la Secretaría de Hacienda de Bogota. ¿ En qué puedo ayudarte hoy ?';
 
   // Hook de síntesis de voz (TTS)
   const { 
@@ -131,6 +133,21 @@ function App() {
     setError(null);
   };
 
+  const handleStartConversation = () => {
+    if (messages.length > 0) return;
+    cancelSpeech();
+    setMessages([
+      {
+        role: 'assistant',
+        content: initialAssistantMessage,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
+    if (ttsSupported) {
+      speak(initialAssistantMessage);
+    }
+  };
+
   return (
     <div className="app">
       {/* Header */}
@@ -168,7 +185,11 @@ function App() {
 
       {/* Área de chat */}
       <main className="app__main">
-        <ChatUI messages={messages} isLoading={isLoading} />
+        <ChatUI
+          messages={messages}
+          isLoading={isLoading}
+          onStartConversation={handleStartConversation}
+        />
       </main>
 
       {/* Error banner */}

@@ -29,34 +29,37 @@
   flex: 1;
 }
 
-.chat-ui__welcome-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  animation: wave-hand 1s ease-in-out infinite;
+.chat-ui__welcome-image {
+  width: min(360px, 50%);
+  height: auto;
+  display: block;
+  margin-bottom: 1.25rem;
 }
 
-@keyframes wave-hand {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  75% {
-    transform: rotate(-10deg);
-  }
-}
-
-.chat-ui__welcome h2 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-  font-size: 1.5rem;
-}
-
-.chat-ui__welcome p {
-  margin: 0;
+.chat-ui__start-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.85rem 1.1rem;
+  border-radius: 12px;
+  background: #AC1927;
+  color: #fff;
+  font-weight: 600;
   font-size: 1rem;
-  max-width: 280px;
+  transition: transform 0.08s ease, filter 0.2s ease, opacity 0.2s ease;
+}
+
+.chat-ui__start-btn:hover {
+  filter: brightness(1.05);
+}
+
+.chat-ui__start-btn:active {
+  transform: translateY(1px);
+}
+
+.chat-ui__start-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Mensajes */

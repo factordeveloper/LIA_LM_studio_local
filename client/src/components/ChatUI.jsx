@@ -5,9 +5,10 @@
 
 import { useEffect, useRef } from 'react';
 import liaIcon from '../assets/Lía_borde_rojo.png';
+import welcomeImage from '../assets/LIA.png';
 import './ChatUI.css';
 
-function ChatUI({ messages, isLoading }) {
+function ChatUI({ messages, isLoading, onStartConversation }) {
   const messagesEndRef = useRef(null);
 
   // Auto-scroll al último mensaje
@@ -20,9 +21,19 @@ function ChatUI({ messages, isLoading }) {
       <div className="chat-ui__messages">
         {messages.length === 0 ? (
           <div className="chat-ui__welcome">
-            <div className="chat-ui__welcome-icon">👋</div>
-            <h2>¡Hola! Soy Lia</h2>
-            <p>Tu asistente virtual. Toca el micrófono o escribe un mensaje.</p>
+            <img
+              src={welcomeImage}
+              alt="LIA"
+              className="chat-ui__welcome-image"
+            />
+            <button
+              type="button"
+              className="chat-ui__start-btn"
+              onClick={onStartConversation}
+              disabled={!onStartConversation}
+            >
+              Iniciar Conversacion
+            </button>
           </div>
         ) : (
           messages.map((msg, index) => (
