@@ -97,14 +97,21 @@
   justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.chat-ui__avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .chat-ui__message--user .chat-ui__message-avatar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #AC1927;
 }
 
 .chat-ui__message--assistant .chat-ui__message-avatar {
-  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  background: transparent;
 }
 
 .chat-ui__message-content {
@@ -125,7 +132,7 @@
 }
 
 .chat-ui__message--user .chat-ui__message-bubble {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #AC1927;
   color: white;
   border-bottom-right-radius: 4px;
 }
@@ -153,7 +160,7 @@
 .chat-ui__typing span {
   width: 8px;
   height: 8px;
-  background: #667eea;
+  background: #AC1927;
   border-radius: 50%;
   animation: typing 1.4s infinite ease-in-out;
 }

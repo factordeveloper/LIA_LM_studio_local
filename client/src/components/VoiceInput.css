@@ -24,19 +24,19 @@
   height: 80px;
   border-radius: 50%;
   border: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #AC1927;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgba(172, 25, 39, 0.4);
 }
 
 .voice-input__button:hover:not(:disabled) {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 6px 20px rgba(172, 25, 39, 0.5);
 }
 
 .voice-input__button:active:not(:disabled) {
@@ -120,14 +120,14 @@
 .voice-input__transcript {
   min-height: 40px;
   padding: 0.75rem 1.5rem;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(172, 25, 39, 0.1);
   border-radius: 20px;
   max-width: 100%;
   text-align: center;
 }
 
 .voice-input__interim {
-  color: #667eea;
+  color: #AC1927;
   font-style: italic;
   font-size: 0.95rem;
 }

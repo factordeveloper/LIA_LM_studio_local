@@ -24,8 +24,8 @@
 }
 
 .text-input__field:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  border-color: #AC1927;
+  box-shadow: 0 0 0 3px rgba(172, 25, 39, 0.15);
 }
 
 .text-input__send {
@@ -34,7 +34,7 @@
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #AC1927;
   color: white;
   font-weight: 600;
   transition: transform 0.15s, opacity 0.2s;

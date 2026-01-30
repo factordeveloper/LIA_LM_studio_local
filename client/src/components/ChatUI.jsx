@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useRef } from 'react';
+import liaIcon from '../assets/Lía_borde_rojo.png';
 import './ChatUI.css';
 
 function ChatUI({ messages, isLoading }) {
@@ -30,7 +31,7 @@ function ChatUI({ messages, isLoading }) {
               className={`chat-ui__message chat-ui__message--${msg.role}`}
             >
               <div className="chat-ui__message-avatar">
-                {msg.role === 'user' ? '👤' : '🤖'}
+                {msg.role === 'user' ? '👤' : <img src={liaIcon} alt="Lía" className="chat-ui__avatar-image" />}
               </div>
               <div className="chat-ui__message-content">
                 <div className="chat-ui__message-bubble">
@@ -47,7 +48,9 @@ function ChatUI({ messages, isLoading }) {
         {/* Indicador de carga */}
         {isLoading && (
           <div className="chat-ui__message chat-ui__message--assistant">
-            <div className="chat-ui__message-avatar">🤖</div>
+            <div className="chat-ui__message-avatar">
+              <img src={liaIcon} alt="Lía" className="chat-ui__avatar-image" />
+            </div>
             <div className="chat-ui__message-content">
               <div className="chat-ui__message-bubble chat-ui__typing">
                 <span></span>

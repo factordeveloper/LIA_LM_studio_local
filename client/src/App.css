@@ -20,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #AC1927;
   color: white;
 }
 
@@ -39,8 +39,17 @@
   gap: 0.5rem;
 }
 
+.app__exp-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
 .app__logo {
-  font-size: 1.75rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .app__subtitle {

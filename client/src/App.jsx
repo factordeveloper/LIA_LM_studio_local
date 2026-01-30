@@ -9,6 +9,8 @@ import TextInput from './components/TextInput';
 import VoiceInput from './components/VoiceInput';
 import useSpeechSynthesis from './hooks/useSpeechSynthesis';
 import { sendMessage, getStatus } from './services/apiService';
+import liaIcon from './assets/Lía_borde_rojo.png';
+import expLogo from './assets/EXPsom.png';
 import './App.css';
 
 function App() {
@@ -30,19 +32,26 @@ function App() {
     preferFemale: true
   });
 
-  // Verificar estado del servidor al cargar
+  // Verificar estado del servidor al cargar y periódicamente
   useEffect(() => {
     checkServerStatus();
+    
+    // Verificar estado cada 30 segundos
+    const interval = setInterval(checkServerStatus, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   const checkServerStatus = async () => {
     try {
       const status = await getStatus();
       setServerStatus(status.data.lmStudio);
-      setError(null);
+      if (status.data.lmStudio === 'connected') {
+        setError(null);
+      }
     } catch {
-      setServerStatus('offline');
-      setError('No se puede conectar con el servidor');
+      setServerStatus('disconnected');
+      // No mostrar error automáticamente si el chat está funcionando
     }
   };
 
@@ -82,6 +91,10 @@ function App() {
         };
 
         setMessages(prev => [...prev, assistantMessage]);
+        
+        // Actualizar estado del servidor como conectado
+        setServerStatus('connected');
+        setError(null);
 
         // Reproducir respuesta con TTS
         if (ttsSupported) {
@@ -123,8 +136,9 @@ function App() {
       {/* Header */}
       <header className="app__header">
         <div className="app__header-content">
+          <img src={expLogo} alt="EXP Logo" className="app__exp-logo" />
           <h1 className="app__title">
-            <span className="app__logo">🤖</span>
+            <img src={liaIcon} alt="Lía" className="app__logo" />
             Lia
           </h1>
           <span className="app__subtitle">Asistente de Voz</span>

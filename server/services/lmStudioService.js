@@ -247,12 +247,24 @@ class LMStudioService {
    */
   async healthCheck() {
     try {
-      // Intenta una petición simple para verificar conexión
-      await axios.get(this.baseUrl.replace('/chat', ''), {
+      // Intenta una petición OPTIONS o HEAD para verificar si el endpoint responde
+      // Sin enviar un payload completo
+      const baseUrl = this.baseUrl.replace('/api/v1/chat', '').replace('/v1/chat/completions', '');
+      await axios.head(baseUrl + '/v1/models', {
         timeout: 5000
+      }).catch(() => {
+        // Si HEAD falla, intentar GET al endpoint de chat con timeout corto
+        return axios.post(this.baseUrl, {
+          model: this.model,
+          system_prompt: "test",
+          input: "ping"
+        }, {
+          timeout: 5000
+        });
       });
       return true;
     } catch (error) {
+      console.log('🔍 Health check falló:', error.message);
       return false;
     }
   }

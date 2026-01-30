@@ -60,7 +60,7 @@ body {
 /* Focus styles para accesibilidad */
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #667eea;
+  outline: 2px solid #AC1927;
   outline-offset: 2px;
 }
 
